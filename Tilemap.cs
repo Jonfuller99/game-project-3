@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.IO;
 
-namespace TilemapExercise
+namespace game_project_3
 {
 
     public class Tilemap
