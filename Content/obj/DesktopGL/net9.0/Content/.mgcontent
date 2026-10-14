@@ -4,9 +4,25 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/jonfu/Documents/KSU/Senior Semester 1/CIS 580/game-project-3/Content/tileset.png</File>
+    <File>M:/School/CIS 580/game-project-3/Content/32x32CircleHitBox.png</File>
+    <File>M:/School/CIS 580/game-project-3/Content/64x64HitBox.png</File>
+    <File>M:/School/CIS 580/game-project-3/Content/BlueGem.png</File>
+    <File>M:/School/CIS 580/game-project-3/Content/DamageOrb.png</File>
+    <File>M:/School/CIS 580/game-project-3/Content/File.spritefont</File>
+    <File>M:/School/CIS 580/game-project-3/Content/gem_pickup.mp3</File>
+    <File>M:/School/CIS 580/game-project-3/Content/hit.mp3</File>
+    <File>M:/School/CIS 580/game-project-3/Content/Jet.png</File>
+    <File>M:/School/CIS 580/game-project-3/Content/tileset.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

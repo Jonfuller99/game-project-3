@@ -1,2 +1,10 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"c:/Users/jonfu/Documents/KSU/Senior Semester 1/CIS 580/game-project-3/Content/tileset.png","c:/Users/jonfu/Documents/KSU/Senior Semester 1/CIS 580/game-project-3/Content/bin/DesktopGL/tileset.xnb","TextureProcessor","Texture2DContent",2364,66645,0.0849848
+"m:/School/CIS 580/game-project-3/Content/32x32CircleHitBox.png","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/32x32CircleHitBox.xnb","TextureProcessor","Texture2DContent",372,4181,0.0536641
+"m:/School/CIS 580/game-project-3/Content/64x64HitBox.png","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/64x64HitBox.xnb","TextureProcessor","Texture2DContent",303,16469,0.0018608
+"m:/School/CIS 580/game-project-3/Content/BlueGem.png","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/BlueGem.xnb","TextureProcessor","Texture2DContent",2931,32853,0.0034692
+"m:/School/CIS 580/game-project-3/Content/DamageOrb.png","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/DamageOrb.xnb","TextureProcessor","Texture2DContent",801,4181,0.0006561
+"m:/School/CIS 580/game-project-3/Content/File.spritefont","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/File.xnb","FontDescriptionProcessor","SpriteFontContent",2068,37913,0.0356189
+"m:/School/CIS 580/game-project-3/Content/gem_pickup.mp3","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/gem_pickup.xnb","SoundEffectProcessor","SoundEffectContent",3927,36969,0.1310793
+"m:/School/CIS 580/game-project-3/Content/hit.mp3","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/hit.xnb","SoundEffectProcessor","SoundEffectContent",5367,50793,0.076961
+"m:/School/CIS 580/game-project-3/Content/Jet.png","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/Jet.xnb","TextureProcessor","Texture2DContent",1332,16469,0.0009639
+"m:/School/CIS 580/game-project-3/Content/tileset.png","m:/School/CIS 580/game-project-3/Content/bin/DesktopGL/tileset.xnb","TextureProcessor","Texture2DContent",5379,36949,0.0547416

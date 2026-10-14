@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7LwkRBIt2mQ=",
+  "dgSpecHash": "a4kI622+KSw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonfu\\Documents\\KSU\\Senior Semester 1\\CIS 580\\game-project-3\\game-project-3.csproj",
+  "projectFilePath": "M:\\School\\CIS 580\\game-project-3\\game-project-3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonfu\\.nuget\\packages\\monogame.content.builder.task\\3.8.6\\monogame.content.builder.task.3.8.6.nupkg.sha512",
     "C:\\Users\\jonfu\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.6\\monogame.framework.desktopgl.3.8.6.nupkg.sha512",
@@ -10,7 +10,8 @@
     "C:\\Users\\jonfu\\.nuget\\packages\\monogame.library.sdl\\2.32.10.2\\monogame.library.sdl.2.32.10.2.nupkg.sha512",
     "C:\\Users\\jonfu\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
     "C:\\Users\\jonfu\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\jonfu\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+    "C:\\Users\\jonfu\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\jonfu\\.nuget\\packages\\tiledcs\\3.3.3\\tiledcs.3.3.3.nupkg.sha512"
   ],
   "logs": []
 }

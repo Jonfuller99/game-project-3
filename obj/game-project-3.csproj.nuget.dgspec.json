@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jonfu\\Documents\\KSU\\Senior Semester 1\\CIS 580\\game-project-3\\game-project-3.csproj": {}
+    "M:\\School\\CIS 580\\game-project-3\\game-project-3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jonfu\\Documents\\KSU\\Senior Semester 1\\CIS 580\\game-project-3\\game-project-3.csproj": {
+    "M:\\School\\CIS 580\\game-project-3\\game-project-3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jonfu\\Documents\\KSU\\Senior Semester 1\\CIS 580\\game-project-3\\game-project-3.csproj",
+        "projectUniqueName": "M:\\School\\CIS 580\\game-project-3\\game-project-3.csproj",
         "projectName": "game-project-3",
-        "projectPath": "C:\\Users\\jonfu\\Documents\\KSU\\Senior Semester 1\\CIS 580\\game-project-3\\game-project-3.csproj",
+        "projectPath": "M:\\School\\CIS 580\\game-project-3\\game-project-3.csproj",
         "packagesPath": "C:\\Users\\jonfu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jonfu\\Documents\\KSU\\Senior Semester 1\\CIS 580\\game-project-3\\obj\\",
+        "outputPath": "M:\\School\\CIS 580\\game-project-3\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\jonfu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\jonfu\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -57,6 +51,10 @@
             "MonoGame.Framework.DesktopGL": {
               "target": "Package",
               "version": "[3.8.*, )"
+            },
+            "TiledCS": {
+              "target": "Package",
+              "version": "[3.3.3, )"
             }
           },
           "imports": [
@@ -75,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
