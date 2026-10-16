@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="24">
- <tileset firstgid="17" source="new_tileset.tsx"/>
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="53">
+ <tileset firstgid="1" source="new_tileset.tsx"/>
  <layer id="1" name="Tile Layer 1" width="30" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACtWWOw4DIQxEuQKbXTa5/0WTBska+TN2XCTFNAbNMwYMxxjjAD1AOH4J4dg3Qi6yPa6Va5UfcbVcGf7txNFnM5eTH8O9hay4xr0MxgRFTMnW4gwXmSzbi7PrfX30FPJqbeU0FW+WO3+Qu8/llvS04p6suRq34pMV1qTiUVm/10vYnlPpz1EPY/pc9V2Ielg0/k/cTJ097ipymbw69zdzpjrOc+RlMbP/Dc8vmncKZbhs3hHTYrP/HHYPNKZks9zMOfOYJ/ji/4q5J51cbb2d3Mr+drAZboWN8636Mvc3c4+yfWM53AqbVcTVcsD4G7NoyzsQDgAA
+   H4sIAAAAAAAACtWWzQ4DIQiEdbvrtu//wu3FhEz4GSiH9jAXNPMhKnqMMQ7QA4TjlxCOfSPkItvjWrlW+RFXy5Xh304cfTZzOfkx3FvIimvcy2BMUMSUbC3OcJHJsr04u97XR08hr9ZWTlPxZrnzB7n7XG5JTyvuyZqrcSs+WWFNKh6V9Xu9hO05lf4c9TCmz1XfhaiHReP/xM3U2eOuIpfJq3N/M2eq4zxHXhYz+9/w/KJ5p1CGy+YdMS02+89h90BjSjbLzZwzj3mCL/6vmHvSydXW28mt7G8Hm+FW2Djfqi9zfzP3KNs3lsOtsFlFXC0HjL8BRfACbhAOAAA=
   </data>
  </layer>
  <objectgroup id="3" name="Object Layer 1">
   <object id="4" name="tree" type="tree" x="256.146" y="192.295" width="31.4254" height="96.4644">
-   <properties>tileset.tsx
+   <properties>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>
@@ -51,6 +51,70 @@
    <properties>
     <property name="solid" type="bool" value="true"/>
    </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Gems">
+  <object id="26" name="Gem" x="303" y="337.5">
+   <point/>
+  </object>
+  <object id="27" name="Gem" x="464" y="336">
+   <point/>
+  </object>
+  <object id="30" name="Gem" x="143.5" y="337">
+   <point/>
+  </object>
+  <object id="31" name="Gem" x="464" y="144.5">
+   <point/>
+  </object>
+  <object id="32" name="Gem" x="624" y="336.5">
+   <point/>
+  </object>
+  <object id="33" name="Gem" x="784.5" y="337">
+   <point/>
+  </object>
+  <object id="35" name="Gem" x="912" y="17.5">
+   <point/>
+  </object>
+  <object id="36" name="Gem" x="879.5" y="47.5">
+   <point/>
+  </object>
+  <object id="37" name="Gem" x="911" y="49">
+   <point/>
+  </object>
+  <object id="38" name="Gem" x="943.5" y="48.5">
+   <point/>
+  </object>
+  <object id="39" name="Gem" x="912" y="81">
+   <point/>
+  </object>
+  <object id="40" name="Gem" x="465" y="497.5">
+   <point/>
+  </object>
+  <object id="41" name="Gem" x="464" y="658">
+   <point/>
+  </object>
+  <object id="42" name="Gem" x="464.5" y="817.5">
+   <point/>
+  </object>
+  <object id="44" name="Gem" x="47" y="914">
+   <point/>
+  </object>
+  <object id="45" name="Gem" x="18" y="915.5">
+   <point/>
+  </object>
+  <object id="46" name="Gem" x="47" y="882">
+   <point/>
+  </object>
+  <object id="49" name="Gem" x="80" y="915.5">
+   <point/>
+  </object>
+  <object id="51" name="Gem" x="46.5" y="949.5">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="GlowItems">
+  <object id="43" name="Magic Orb" x="464" y="913.5">
+   <point/>
   </object>
  </objectgroup>
 </map>

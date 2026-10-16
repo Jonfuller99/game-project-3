@@ -12,10 +12,16 @@ namespace game_project_3
     /// <summary>
     /// A class representing a jet
     /// </summary>
-    public class JetSprite
+    public class TripSprite
     {
         private Game game;
         private GamePadState gamePadState;
+
+        private const float ANIMATION_SPEED = 0.2f;
+
+        private double animationTimer;
+
+        private int animationFrame;
 
         private KeyboardState keyboardState;
         protected KeyboardState priorKeyboardState;
@@ -23,6 +29,7 @@ namespace game_project_3
         private Texture2D texture;
 
         private Texture2D hitbox;
+
 
 
         private bool flipped;
@@ -33,10 +40,10 @@ namespace game_project_3
         // private int borderMinY = 0;
         // private int borderMaxX = 800;
         private int borderMaxY = 480;
-        private Vector2 position = new Vector2(50, 430);
+        public Vector2 position = new Vector2(50, 430) ;
         
 
-        private BoudningRectangle bounds = new BoudningRectangle(new Vector2(50-32, 430-32), 64, 64);
+        private BoudningRectangle bounds = new BoudningRectangle(new Vector2(50 - 16, 430-16), 32, 32);
 
         /// <summary>
         /// The boudning volume of the sprite
@@ -47,9 +54,10 @@ namespace game_project_3
         /// The color to blend with the ghost
         /// </summary>
         public Color Color {get; set;} = Color.White;
+        public Vector2 WorldSize {get; set;}
 
 
-        public JetSprite(Game game)
+        public TripSprite(Game game)
         {
             this.game = game;            
         }
@@ -60,8 +68,8 @@ namespace game_project_3
         /// <param name="content">The ContentManager to load with</param>
         public void LoadContent(ContentManager content)
         {
-            texture = content.Load<Texture2D>("Jet");
-            hitbox = content.Load<Texture2D>("64x64HitBox");
+            texture = content.Load<Texture2D>("Trip");
+            hitbox = content.Load<Texture2D>("32x32HitBox");
         }
 
         public void Reset(ContentManager content)
@@ -110,8 +118,25 @@ namespace game_project_3
                 delta.X += movementSpeed;
                 flipped = false;
                 direction = Direction.Right;
+                
 
             }
+            
+            bool isMoving = delta != Vector2.Zero;
+
+            if(isMoving)
+            {
+                UpdateAnimation(gameTime);
+
+            }
+            else
+            {
+                animationFrame = 0;
+                animationTimer = 0;
+
+            }
+
+
 
             Move(delta, solids);
 
@@ -136,25 +161,33 @@ namespace game_project_3
             // position.Y = MathHelper.Clamp(position.Y, borderMinY, borderMaxY);
 
             // update the bounding box center
-          SyncBounds();
+            position.X = MathHelper.Clamp(position.X, bounds.Width / 2, WorldSize.X - bounds.Width / 2);
+            position.Y = MathHelper.Clamp(position.Y, bounds.Height / 2, WorldSize.Y - bounds.Height / 2);
+            SyncBounds();
 
-            // Wrap the ship to keep it on-screen
-            var viewport = game.GraphicsDevice.Viewport;
-            if (position.Y < 0) position.Y = viewport.Height;
-            if (position.Y > viewport.Height) position.Y = 0;
-            if (position.X < 0) position.X = viewport.Width;
-            if (position.X > viewport.Width) position.X = 0;
+
             
         }
 
+
+        private void UpdateAnimation(GameTime gameTime)
+        {
+            animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if(animationTimer > ANIMATION_SPEED)
+            {
+                animationFrame++;
+                if (animationFrame > 3) animationFrame = 0;
+                animationTimer -= ANIMATION_SPEED;
+            }
+        }
 
         /// <summary>
         /// update the bounding box center
         /// </summary>
         private void SyncBounds()
         {
-            bounds.X = position.X - 32;
-            bounds.Y = position.Y - 32;
+            bounds.X = position.X - bounds.Width / 2;
+            bounds.Y = position.Y - bounds.Height / 2;
         }
 
         private void Move(Vector2 delta, List<BoudningRectangle> solids)
@@ -199,8 +232,16 @@ namespace game_project_3
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             SpriteEffects spriteEffects = (flipped) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
             
-            spriteBatch.Draw(texture, position, null, Color, 0, new Vector2(32, 32), 1f, spriteEffects, 0);
+
+            
+
+            var source = new Rectangle(animationFrame * 32, 0, 32, 32);
+            
+            spriteBatch.Draw(texture, position, source, Color, 0, new Vector2(16, 16), 1f, spriteEffects, 0);
+            
+            // Show Hitbox
             // Rectangle rect = new ((int)bounds.X, (int)bounds.Y, (int)bounds.Width, (int)bounds.Height);
             // spriteBatch.Draw(hitbox, rect, Color.White);
         }

@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using CollisionExample.Collisions;
+using System.Security.Cryptography.X509Certificates;
+using System.Diagnostics.Tracing;
 
 
 namespace game_project_3
@@ -71,7 +73,7 @@ namespace game_project_3
             }
 
             var source = new Rectangle(animationFrame * 32, 0, 32, 32);
-            spriteBatch.Draw(texture, position, source, Color.White);
+            spriteBatch.Draw(texture ,position, source, Color.White, 0f, new Vector2(16,16), new Vector2(1,.7f), SpriteEffects.None, 0f);
         }
     }
 }

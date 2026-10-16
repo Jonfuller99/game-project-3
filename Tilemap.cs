@@ -68,7 +68,7 @@ public class Tilemap
 
         foreach (var layer in _map.Layers)
         {
-            if (layer.type != TiledLayerType.ObjectLayer || layer.name != layerName) continue;
+            if (layer.type != TiledLayerType.ObjectLayer || layer.name != layerName) continue; //checking for object layers and correct layer name, if not then skips layer
 
             foreach (var obj in layer.objects)
             {
@@ -81,6 +81,26 @@ public class Tilemap
                         result.Add(new BoudningRectangle(obj.x, obj.y, obj.width, obj.height));
                     }
                 }
+            }
+        }
+
+        return result;
+    }
+
+
+    public List<Vector2> GetPoints(string layerName, string objectName)
+    {
+        var result = new List<Vector2>();
+
+        foreach (var layer in _map.Layers)
+        {
+           if (layer.type != TiledLayerType.ObjectLayer || layer.name != layerName) continue; //checking for object layers and correct layer name, if not then skips layer 
+
+           foreach (var obj in layer.objects)
+            {
+                if (obj.name != objectName) continue;
+
+                result.Add(new Vector2(obj.x, obj.y));
             }
         }
 
