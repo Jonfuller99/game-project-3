@@ -24,25 +24,19 @@ namespace game_project_3
         private int animationFrame;
 
         private KeyboardState keyboardState;
+
         protected KeyboardState priorKeyboardState;
 
         private Texture2D texture;
 
         private Texture2D hitbox;
 
-
-
         private bool flipped;
 
         private Direction direction;
 
-        private int borderMinX = 0;
-        // private int borderMinY = 0;
-        // private int borderMaxX = 800;
-        private int borderMaxY = 480;
-        public Vector2 position = new Vector2(50, 430) ;
+        public Vector2 position;
         
-
         private BoudningRectangle bounds = new BoudningRectangle(new Vector2(50 - 16, 430-16), 32, 32);
 
         /// <summary>
@@ -72,11 +66,6 @@ namespace game_project_3
             hitbox = content.Load<Texture2D>("32x32HitBox");
         }
 
-        public void Reset(ContentManager content)
-        {
-            LoadContent(content);
-            position = new Vector2(borderMinX + 50, borderMaxY - 50);
-        }
 
         /// <summary>
         /// Updates the sprite's position based on user input
@@ -119,7 +108,6 @@ namespace game_project_3
                 flipped = false;
                 direction = Direction.Right;
                 
-
             }
             
             bool isMoving = delta != Vector2.Zero;
@@ -133,7 +121,6 @@ namespace game_project_3
             {
                 animationFrame = 0;
                 animationTimer = 0;
-
             }
 
 
@@ -156,9 +143,6 @@ namespace game_project_3
 
             priorKeyboardState = keyboardState;
 
-
-            // position.X = MathHelper.Clamp(position.X, borderMinX, borderMaxX);
-            // position.Y = MathHelper.Clamp(position.Y, borderMinY, borderMaxY);
 
             // update the bounding box center
             position.X = MathHelper.Clamp(position.X, bounds.Width / 2, WorldSize.X - bounds.Width / 2);

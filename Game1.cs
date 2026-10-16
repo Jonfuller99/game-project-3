@@ -99,6 +99,7 @@ protected override void LoadContent()
     
 
     characterPlaceHolder.LoadContent(Content);
+    characterPlaceHolder.position = _tilemap.GetPoints("SpawnPoint", "Spawn")[0];
     characterPlaceHolder.WorldSize = new Vector2(mapW, mapH );
 
     _rain.Source = new Rectangle(0, 0, mapW, mapH);
