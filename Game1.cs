@@ -46,6 +46,8 @@ public class Game1 : Game
     private RainParticleSystem _rain;
 
     private GlowPickup _relic; 
+
+    private Song rain;
     
 
 public Game1()
@@ -109,6 +111,13 @@ protected override void LoadContent()
     _relic = new GlowPickup(orbPoints[0]); 
     _relic.LoadContent(Content, GraphicsDevice);    
 
+
+    rain = Content.Load<Song>("rain");
+    MediaPlayer.IsRepeating = true;
+    MediaPlayer.Volume = 0.50f; 
+    MediaPlayer.Play(rain);
+
+
 }
 
     protected override void Update(GameTime gameTime)
@@ -145,7 +154,7 @@ protected override void LoadContent()
 protected override void Draw(GameTime gameTime)
 {
     GraphicsDevice.Clear(Color.CornflowerBlue);
-
+    
     var viewport = GraphicsDevice.Viewport;
     Vector2 visibleSize = new Vector2(viewport.Width, viewport.Height) / Zoom;
 
