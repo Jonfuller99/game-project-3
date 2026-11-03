@@ -37,12 +37,12 @@ namespace game_project_3
 
         public Vector2 position;
         
-        private BoudningRectangle bounds = new BoudningRectangle(new Vector2(50 - 16, 430-16), 32, 32);
+        private BoundingRectangle bounds = new BoundingRectangle(new Vector2(50 - 16, 430-16), 32, 32);
 
         /// <summary>
         /// The boudning volume of the sprite
         /// </summary>
-        public BoudningRectangle Bounds => bounds;
+        public BoundingRectangle Bounds => bounds;
 
         /// <summary>
         /// The color to blend with the ghost
@@ -71,7 +71,7 @@ namespace game_project_3
         /// Updates the sprite's position based on user input
         /// </summary>
         /// <param name="gameTime">The GameTime</param>
-        public void Update(GameTime gameTime,  List<BoudningRectangle> solids)
+        public void Update(GameTime gameTime,  List<BoundingRectangle> solids)
         {
             gamePadState = GamePad.GetState(0);
             keyboardState = Keyboard.GetState();
@@ -174,7 +174,7 @@ namespace game_project_3
             bounds.Y = position.Y - bounds.Height / 2;
         }
 
-        private void Move(Vector2 delta, List<BoudningRectangle> solids)
+        private void Move(Vector2 delta, List<BoundingRectangle> solids)
         {
             // Horizontal
             position.X += delta.X;
@@ -199,7 +199,7 @@ namespace game_project_3
             }
         }
 
-        private static bool Overlaps(BoudningRectangle a, BoudningRectangle b)
+        private static bool Overlaps(BoundingRectangle a, BoundingRectangle b)
         {
             const float epsilon = 0.01f; // ignore float error when sitting flush
             return a.Left < b.Right - epsilon

@@ -30,7 +30,7 @@ namespace CollisionExample.Collisions
         /// <param name="a">The first rectangle</param>
         /// <param name="b">The second rectangle</param>
         /// <returns></returns>
-        public static bool Collides(BoudningRectangle a, BoudningRectangle b)
+        public static bool Collides(BoundingRectangle a, BoundingRectangle b)
         {
             return !(a.Right < b.Left || a.Left > b.Right || a.Top > b.Bottom || a.Bottom < b.Top);
         }
@@ -41,7 +41,7 @@ namespace CollisionExample.Collisions
         /// <param name="c">The circle</param>
         /// <param name="r">The rectangle</param>
         /// <returns></returns>
-        public static bool Collides(BoudningCircle c, BoudningRectangle r)
+        public static bool Collides(BoudningCircle c, BoundingRectangle r)
         {
             float nearestX = MathHelper.Clamp(c.Center.X, r.Left, r.Right);
             float nearestY = MathHelper.Clamp(c.Center.Y, r.Top, r.Bottom);
@@ -52,7 +52,7 @@ namespace CollisionExample.Collisions
             
         }
 
-        public static bool Collides(BoudningRectangle r, BoudningCircle c) => Collides(c, r);
+        public static bool Collides(BoundingRectangle r, BoudningCircle c) => Collides(c, r);
 
     }
 }

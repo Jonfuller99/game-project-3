@@ -27,8 +27,11 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    
 
     private SpriteFont font;
+
+    private KeyboardState _prevKeys;
     public Tilemap _tilemap;
 
     private TripSprite characterPlaceHolder;
@@ -38,7 +41,7 @@ public class Game1 : Game
     public int gemsCollected;
     public SoundEffect gemPickup;
     public SoundEffect hit;
-    private List<BoudningRectangle> _solids;
+    private List<BoundingRectangle> _solids;
 
     private List<GemSprite> gems = new List<GemSprite>();
     private List<Vector2> _gemPoints;
@@ -125,6 +128,21 @@ protected override void LoadContent()
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
+        var keys = Keyboard.GetState();
+        if(keys.IsKeyDown(Keys.P) && _prevKeys.IsKeyUp(Keys.P))
+        {
+            SaveGame();
+        }
+        if(keys.IsKeyDown(Keys.L) && _prevKeys.IsKeyUp(Keys.L))
+        {
+            LoadGame();
+        }
+        if(keys.IsKeyDown(Keys.K) && _prevKeys.IsKeyUp(Keys.K))
+        {
+            DeleteSave();
+        }
+        _prevKeys = keys;
+
         // TODO: Add your update logic here
         characterPlaceHolder.Update(gameTime, _solids);
         characterPlaceHolder.Color = Color.White;
@@ -187,9 +205,48 @@ protected override void Draw(GameTime gameTime)
 
     _spriteBatch.Begin();
     _spriteBatch.DrawString(font, $"Gems: {gemsCollected}", new Vector2(2, 2), Color.Black);
+    _spriteBatch.DrawString(font, $"Press 'P' to Save", new Vector2(1650, 2), Color.Black);
+    _spriteBatch.DrawString(font, $"Press 'L' to Load'", new Vector2(1650, 22), Color.Black);
+    _spriteBatch.DrawString(font, $"Press 'K' to Delete Save", new Vector2(1650, 44), Color.Black);
     _spriteBatch.End();
 
     _rain.Transform = transform;
     base.Draw(gameTime);
 }
+
+
+private void SaveGame()
+{
+    var save = new JsonSave(characterPlaceHolder.position, gemsCollected, gems, _gemPoints);
+    save.SaveToFile();
+}
+
+private void LoadGame()
+{
+    var save = JsonSave.LoadFromFile();
+    if (save == null) return;
+
+    characterPlaceHolder.position = save.PlayerPosition;
+    gemsCollected = save.GemsCollected;
+
+    // Match saved gems to the ones loaded from the map by position
+    foreach (var saved in save.Gems)
+    {
+        for (int i = 0; i < _gemPoints.Count; i++)
+        {
+            if (Math.Abs(_gemPoints[i].X - saved.X) < 0.01f &&
+                Math.Abs(_gemPoints[i].Y - saved.Y) < 0.01f)
+            {
+                gems[i].Collected = saved.Collected;
+                break;
+            }
+        }
+    }
+}
+
+private void DeleteSave()
+{
+    JsonSave.DeleteSave();
+}
+
 }

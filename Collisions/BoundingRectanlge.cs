@@ -9,7 +9,7 @@ namespace CollisionExample.Collisions
     /// <summary>
     /// struct representing circular bounds
     /// </summary>
-    public struct BoudningRectangle
+    public struct BoundingRectangle
     {
     
         public float X;
@@ -21,7 +21,7 @@ namespace CollisionExample.Collisions
         public float Top => Y;
         public float Bottom => Y + Height;
 
-        public BoudningRectangle(float x, float y, float width, float height)
+        public BoundingRectangle(float x, float y, float width, float height)
         {
             X = x;
             Y = y;
@@ -29,7 +29,7 @@ namespace CollisionExample.Collisions
             Width = width;
         }
 
-        public BoudningRectangle(Vector2 position, float width, float height)
+        public BoundingRectangle(Vector2 position, float width, float height)
         {
             X = position.X;
             Y = position.Y;
@@ -38,7 +38,7 @@ namespace CollisionExample.Collisions
         }
          
 
-        public bool CollidesWith(BoudningRectangle other)
+        public bool CollidesWith(BoundingRectangle other)
         {
             
             return CollisionHelper.Collides(this, other);
