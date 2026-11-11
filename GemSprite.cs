@@ -21,7 +21,7 @@ namespace game_project_3
 
         private int animationFrame;
 
-        private Vector2 position;
+        private Vector2 _position;
 
         private Texture2D texture;
 
@@ -34,6 +34,8 @@ namespace game_project_3
         /// </summary>
         public BoudningCircle Bounds => bounds;
 
+        private const int SpriteSize = 32;
+        private const float ScaleY = 0.7f;
 
 
         /// <summary>
@@ -42,8 +44,12 @@ namespace game_project_3
         /// <param name="position">The position of the sprite in the game</param>
         public GemSprite(Vector2 position)
         {
-            this.position = position;
-            this.bounds = new BoudningCircle(position - new Vector2(-16, -16), 16);
+            // Spawn point = bottom-center of the (scaled) sprite.
+            // The sprite's center is half its scaled height above that point.
+            _position = new Vector2(position.X, position.Y - (SpriteSize * ScaleY) / 2f);
+
+            // Hitbox centered on the same point the sprite is drawn around
+            bounds = new BoudningCircle(_position, SpriteSize / 2f);
         }
 
         /// <summary>
@@ -73,7 +79,8 @@ namespace game_project_3
             }
 
             var source = new Rectangle(animationFrame * 32, 0, 32, 32);
-            spriteBatch.Draw(texture ,position, source, Color.White, 0f, new Vector2(16,16), new Vector2(1,.7f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, _position, source, Color.White, 0f,   
+                                            new Vector2(16, 16), new Vector2(1, ScaleY), SpriteEffects.None, 0f);
         }
     }
 }

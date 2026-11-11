@@ -90,7 +90,7 @@ public class Tilemap
         }
     }
 
-    public List<BoundingRectangle> GetSolidRectangles(string layerName)
+    public List<BoundingRectangle> GetAllSolidRectangles(string layerName)
     {
         var result = new List<BoundingRectangle>();
 
@@ -109,6 +109,25 @@ public class Tilemap
                         result.Add(new BoundingRectangle(obj.x, obj.y, obj.width, obj.height));
                     }
                 }
+            }
+        }
+
+        return result;
+    }
+
+    public List<BoundingRectangle> GetRectangleObjects(string layerName, string objectName)
+    {
+        var result = new List<BoundingRectangle>();
+
+        foreach (var layer in _map.Layers)
+        {
+            if (layer.type != TiledLayerType.ObjectLayer || layer.name != layerName) continue;
+
+            foreach (var obj in layer.objects)
+            {
+                if (obj.name != objectName) continue;
+
+                result.Add(new BoundingRectangle(obj.x, obj.y, obj.width, obj.height));
             }
         }
 

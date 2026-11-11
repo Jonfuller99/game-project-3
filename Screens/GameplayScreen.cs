@@ -44,6 +44,7 @@ namespace Screens
         public SoundEffect gemPickup;
         public SoundEffect hit;
         private List<BoundingRectangle> _solids;
+        private List<BoundingRectangle> _interact_areas;
 
         private List<GemSprite> gems = new List<GemSprite>();
         private List<Vector2> _gemPoints;
@@ -104,7 +105,9 @@ namespace Screens
                 int mapW = _tilemap.WidthInPixels;
                 int mapH = _tilemap.HeightInPixels;
 
-                _solids = _tilemap.GetSolidRectangles("Object Layer 1");
+                _solids = _tilemap.GetAllSolidRectangles("Object Layer 1");
+                
+                _interact_areas = _tilemap.GetRectangleObjects("Object Layer 1", "interact_area");
 
                 _gemPoints = _tilemap.GetPoints("Gems", "Gem");
 
@@ -200,7 +203,6 @@ namespace Screens
             {
                 DeleteSave();
             }
-            _prevKeys = keys;
 
             // TODO: Add your update logic here
             characterPlaceHolder.Update(gameTime, _solids);
@@ -217,12 +219,34 @@ namespace Screens
                 }
             }
 
+
+            foreach(var area in _interact_areas)
+            {
+                if (area.CollidesWith(characterPlaceHolder.Bounds))
+                {
+                    characterPlaceHolder.Color = Color.Green;
+                    if(keys.IsKeyDown(Keys.E) && _prevKeys.IsKeyUp(Keys.E))
+                    {
+                        LoadingScreen.Load(ScreenManager, true, 0, new Level1Screen());
+                        return;
+                    }
+                                    
+                }
+            }
+
+
+
+
             _relic.Update(gameTime); 
             if (!_relic.Collected && _relic.Bounds.CollidesWith(characterPlaceHolder.Bounds))
             {
                 _relic.Collected = true;
                 gemPickup.Play();
             }
+
+
+
+            _prevKeys = keys;
         }
 
         // Unlike the Update method, this will only be called when the gameplay screen is active.

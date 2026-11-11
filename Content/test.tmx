@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="58">
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="61">
  <tileset firstgid="1" source="new_tileset.tsx"/>
  <layer id="1" name="Tile Layer 1" width="30" height="30">
   <data encoding="base64" compression="gzip">
@@ -51,6 +51,10 @@
    <properties>
     <property name="solid" type="bool" value="true"/>
    </properties>
+  </object>
+  <object id="58" name="interact_area" x="736" y="288" width="32" height="32"/>
+  <object id="60" name="help_text" x="684.5" y="229.167" width="48.3333" height="34.3333">
+   <text fontfamily="Yu Gothic" pixelsize="12" wrap="1" color="#bab087" halign="center">Press E to open</text>
   </object>
  </objectgroup>
  <objectgroup id="6" name="Gems">
