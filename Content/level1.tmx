@@ -357,7 +357,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="10" name="Spawns">
+ <objectgroup id="10" name="Spawns" visible="0">
   <object id="3" name="enemy_spawn" x="272" y="432">
    <point/>
   </object>
