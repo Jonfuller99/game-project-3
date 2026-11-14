@@ -36,7 +36,7 @@ public class GlowPickup
     
 
     public bool Collected { get; set; }
-    public BoudningCircle Bounds => new BoudningCircle(_position - new Vector2(-16, -16), 16);
+    public BoudningCircle Bounds => new BoudningCircle(_position - new Vector2(-16, -16), 32);
 
     public GlowPickup(Game game, Vector2 position)
     {
@@ -97,11 +97,17 @@ public class GlowPickup
 
     public void Update(GameTime gameTime)
     {
-        float angle = (float)gameTime.TotalGameTime.TotalSeconds;
-        effect.World = Matrix.CreateRotationY(angle);
+        _time = gameTime.TotalGameTime.TotalSeconds;   // also drives the glow pulse
+        _rotation = (float)_time * 2f;
+
+        // scale the unit quad up to the texture's pixel size, spin around Y, move to _position
+        effect.World =
+        Matrix.CreateScale(_texture.Width / 2f, _texture.Height / 2f, 1f) *
+        Matrix.CreateRotationY(_rotation) *
+        Matrix.CreateTranslation(_position.X, _position.Y, 0);
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(Matrix cameraTransform)
     {
         if (Collected) return;
 
@@ -115,6 +121,8 @@ public class GlowPickup
         device.DepthStencilState = DepthStencilState.None;
         device.RasterizerState = RasterizerState.CullNone;
         device.SamplerStates[0] = SamplerState.LinearClamp;
+
+        effect.View = cameraTransform;   // same matrix the sprite batch uses
 
         effect.CurrentTechnique.Passes[0].Apply();
         device.DrawUserIndexedPrimitives(

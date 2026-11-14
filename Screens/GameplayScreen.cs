@@ -321,7 +321,6 @@ namespace Screens
             Matrix transform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0) 
                                 * Matrix.CreateScale(Zoom, Zoom, 1f);
 
-            _relic.Draw(_spriteBatch);
             
              
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: transform);
@@ -347,6 +346,8 @@ namespace Screens
             _spriteBatch.DrawString(_gameFont, $"Press 'L' to Load'", new Vector2(1650, 22), Color.Black);
             _spriteBatch.DrawString(_gameFont, $"Press 'K' to Delete Save", new Vector2(1650, 44), Color.Black);
             _spriteBatch.End();
+
+            _relic.Draw(transform);
 
             _rain.Transform = transform;
         }
