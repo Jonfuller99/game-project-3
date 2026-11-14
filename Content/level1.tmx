@@ -259,7 +259,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="13" name="GemSpawns" visible="0">
+ <objectgroup id="13" name="GemSpawns">
   <object id="87" name="gem" x="112" y="440">
    <point/>
   </object>
@@ -357,7 +357,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="10" name="Spawns" visible="0">
+ <objectgroup id="10" name="Spawns">
   <object id="3" name="enemy_spawn" x="272" y="432">
    <point/>
   </object>

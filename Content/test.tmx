@@ -122,7 +122,7 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="GlowItems">
-  <object id="43" name="Magic Orb" x="464" y="913.5">
+  <object id="43" name="Bow" x="464" y="913.5">
    <point/>
   </object>
  </objectgroup>

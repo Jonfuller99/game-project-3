@@ -20,4 +20,17 @@ Content/gem_pickup.mp3  - created by me, Jon Fuller for this project using FL St
 
 Content/rain.mp3  - created by me, Jon Fuller for this project using FL Studio
 
+Content/enemy_jimbo.png  - created by me, Jon Fuller for this project using www.piskelapp.com
+
+Content/brute.png  - created by me, Jon Fuller for this project using www.piskelapp.com
+
+Content/bow.png  - created by me, Jon Fuller for this project using www.piskelapp.com
+
+Content/quiver.png  - created by me, Jon Fuller for this project using www.piskelapp.com
+
+Content/test.tmx  - created by me, Jon Fuller for this project using Tiled
+
+Content/level1.tmx  - created by me, Jon Fuller for this project using Tiled
+
+Content/Tielset_Interior Wood.Gnomenlied.png  - created by Gnomenlied, from https://gnomenlied.itch.io/wood-tileset
 

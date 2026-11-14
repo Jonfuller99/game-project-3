@@ -14,35 +14,114 @@ public class GlowPickup
     private float _rotation;
     private double _time;
 
+     /// <summary>
+    /// The vertices of the quad
+    /// </summary>
+    VertexPositionTexture[] vertices;
+
+    /// <summary>
+    /// The vertex indices of the quad
+    /// </summary>
+    short[] indices;
+
+    /// <summary>
+    /// The effect to use rendering the triangle
+    /// </summary>
+    BasicEffect effect;
+
+    /// <summary>
+    /// The game this triangle belongs to 
+    /// </summary>
+    Game game;
+    
+
     public bool Collected { get; set; }
     public BoudningCircle Bounds => new BoudningCircle(_position - new Vector2(-16, -16), 16);
 
-    public GlowPickup(Vector2 position)
+    public GlowPickup(Game game, Vector2 position)
     {
         _position = position;
+        this.game = game;
+        InitializeVertices();
+        InitializeIndices();
+        InitializeEffect();
     }
+
+    /// <summary>
+    /// Initializes the vertices of our quad
+    /// </summary>
+    public void InitializeVertices() 
+    {
+        // Unit quad centered on origin, y-down to match pixel space
+        vertices = new VertexPositionTexture[4];
+        vertices[0] = new VertexPositionTexture(new Vector3(-1, -1, 0), new Vector2(0, 0)); // top left
+        vertices[1] = new VertexPositionTexture(new Vector3( 1, -1, 0), new Vector2(1, 0)); // top right
+        vertices[2] = new VertexPositionTexture(new Vector3( 1,  1, 0), new Vector2(1, 1)); // bottom right
+        vertices[3] = new VertexPositionTexture(new Vector3(-1,  1, 0), new Vector2(0, 1)); // bottom left
+    }
+
+
+    /// <summary>
+    /// Initialize the indices of our quad
+    /// </summary>
+    public void InitializeIndices() 
+    {
+        indices = new short[] { 0, 1, 2, 2, 3, 0 };
+
+    }
+
+
+    /// <summary>
+    /// Initializes the basic effect used to draw the quad
+    /// </summary>
+    public void InitializeEffect()
+    {
+        var vp = game.GraphicsDevice.Viewport;
+        effect = new BasicEffect(game.GraphicsDevice)
+        {
+            World = Matrix.Identity,
+            View = Matrix.Identity,
+            Projection = Matrix.CreateOrthographicOffCenter(0, vp.Width, vp.Height, 0, -100, 100),
+            TextureEnabled = true,
+            VertexColorEnabled = false
+        };
+    }
+
 
     public void LoadContent(ContentManager content, GraphicsDevice device)
     {
-        _texture = content.Load<Texture2D>("DamageOrb"); 
-        _glow = CreateGlow(device, 64);
+        _texture = content.Load<Texture2D>("bow"); 
+        _glow = CreateGlow(device, 128);
+        effect.Texture = _texture;
     }
 
     public void Update(GameTime gameTime)
     {
-        float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        _time += dt;
-        _rotation += dt * 2f;
+        float angle = (float)gameTime.TotalGameTime.TotalSeconds;
+        effect.World = Matrix.CreateRotationY(angle);
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
         if (Collected) return;
 
-        float pulse = 0.5f + 0.5f * (float)Math.Sin(_time * 4);
-        Color tint = Color.Lerp(Color.White, Color.LightGoldenrodYellow, pulse);
+        // float pulse = 0.5f + 0.5f * (float)Math.Sin(_time * 4);
+        // Color tint = Color.Lerp(Color.White, Color.LightGoldenrodYellow, pulse);
 
-        spriteBatch.Draw(_texture, _position, null, tint, _rotation, new Vector2(_texture.Width / 2f, _texture.Height / 2f), 1f, SpriteEffects.None, 0);
+        // spriteBatch.Draw(_texture, _position, null, tint, _rotation, new Vector2(_texture.Width / 2f, _texture.Height / 2f), 1f, SpriteEffects.None, 0);
+
+        var device = game.GraphicsDevice;
+        device.BlendState = BlendState.AlphaBlend;
+        device.DepthStencilState = DepthStencilState.None;
+        device.RasterizerState = RasterizerState.CullNone;
+        device.SamplerStates[0] = SamplerState.LinearClamp;
+
+        effect.CurrentTechnique.Passes[0].Apply();
+        device.DrawUserIndexedPrimitives(
+            PrimitiveType.TriangleList,
+            vertices, 0, 4,
+            indices, 0, 2);
+    
     }
 
     public void DrawGlow(SpriteBatch spriteBatch)

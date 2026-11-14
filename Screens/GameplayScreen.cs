@@ -125,8 +125,8 @@ namespace Screens
                 _rain.Source = new Rectangle(0, 0, mapW, mapH);
 
 
-                List<Vector2> orbPoints = _tilemap.GetPoints("GlowItems", "Magic Orb");
-                _relic = new GlowPickup(orbPoints[0]); 
+                List<Vector2> orbPoints = _tilemap.GetPoints("GlowItems", "Bow");
+                _relic = new GlowPickup(game, orbPoints[0]); 
                 _relic.LoadContent(game.Content, game.GraphicsDevice);    
 
 
@@ -321,11 +321,13 @@ namespace Screens
             Matrix transform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0) 
                                 * Matrix.CreateScale(Zoom, Zoom, 1f);
 
+            _relic.Draw(_spriteBatch);
+            
+             
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: transform);
             _tilemap.Draw(_spriteBatch);
 
             foreach (var gem in gems) gem.Draw(gameTime, _spriteBatch);
-            _relic.Draw(_spriteBatch); 
             characterPlaceHolder.Draw(gameTime, _spriteBatch);
 
             _spriteBatch.End();
